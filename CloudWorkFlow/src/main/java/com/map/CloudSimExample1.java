@@ -1,14 +1,5 @@
 package com.map;
 
-/*
- * Title:        CloudSim Toolkit
- * Description:  CloudSim (Cloud Simulation) Toolkit for Modeling and Simulation
- *               of Clouds
- * Licence:      GPL - http://www.gnu.org/copyleft/gpl.html
- *
- * Copyright (c) 2009, The University of Melbourne, Australia
- */
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,24 +26,11 @@ import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
 
-/**
- * A simple example showing how to create a data center with one host and run one cloudlet on it.
- */
 public class CloudSimExample1 {
-    /**
-     * The cloudlet list.
-     */
+
     private static List<NewCloudlet> cloudletList;
-    /**
-     * The vmlist.
-     */
     private static List<Vm> vmlist;
 
-    /**
-     * Creates main() to run this example.
-     *
-     * @param args the args
-     */
     @SuppressWarnings("unused")
     public static void main(String[] args) {
         Log.printLine("Starting CloudSimExample1...");
@@ -71,7 +49,7 @@ public class CloudSimExample1 {
 
             vmlist = new ArrayList<Vm>();
 
-            int numberOfVMs = 4;
+            int numberOfVMs = 3;
             int mips = 250;
             long size = 1000; // image size (MB)
             int ram = 512; // vm memory (MB)
@@ -98,27 +76,82 @@ public class CloudSimExample1 {
             UtilizationModel utilizationModel = new UtilizationModelFull();
 
 
-            //for(int i = 0; i<numberOfCloudlets; i++){
             NewCloudlet cloudlet = new NewCloudlet(0, length, pesNumber, fileSize,
                     outputSize, utilizationModel, utilizationModel,
                     utilizationModel, new ArrayList<NewCloudlet>());
             cloudlet.setUserId(brokerId);
             cloudletList.add(cloudlet);
-            //}
+
             NewCloudlet cloudlet1 = new NewCloudlet(1, length, pesNumber, fileSize,
                     outputSize, utilizationModel, utilizationModel,
                     utilizationModel, new ArrayList<NewCloudlet>());
             cloudlet1.setUserId(brokerId);
             cloudletList.add(cloudlet1);
 
-            ArrayList<NewCloudlet> ncl = new ArrayList<NewCloudlet>();
-            ncl.add(cloudlet);
-            ncl.add(cloudlet1);
             NewCloudlet cloudlet2 = new NewCloudlet(2, length, pesNumber, fileSize,
                     outputSize, utilizationModel, utilizationModel,
-                    utilizationModel, ncl );
+                    utilizationModel, new ArrayList<NewCloudlet>());
             cloudlet2.setUserId(brokerId);
             cloudletList.add(cloudlet2);
+
+            ArrayList<NewCloudlet> ncl = new ArrayList<NewCloudlet>();
+            ncl.add(cloudlet);
+            ncl.add(cloudlet2);
+            NewCloudlet cloudlet3 = new NewCloudlet(3, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, ncl );
+            cloudlet3.setUserId(brokerId);
+            cloudletList.add(cloudlet3);
+
+            ArrayList<NewCloudlet> ncl2 = new ArrayList<NewCloudlet>();
+            ncl2.add(cloudlet);
+            ncl2.add(cloudlet3);
+            NewCloudlet cloudlet4 = new NewCloudlet(4, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, ncl2 );
+            cloudlet4.setUserId(brokerId);
+            cloudletList.add(cloudlet4);
+
+            NewCloudlet cloudlet5 = new NewCloudlet(5, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, new ArrayList<NewCloudlet>());
+            cloudlet5.setUserId(brokerId);
+            cloudletList.add(cloudlet5);
+
+            ArrayList<NewCloudlet> ncl3 = new ArrayList<NewCloudlet>();
+            ncl3.add(cloudlet);
+            ncl3.add(cloudlet5);
+            ncl3.add(cloudlet4);
+            NewCloudlet cloudlet6 = new NewCloudlet(6, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, ncl3 );
+            cloudlet6.setUserId(brokerId);
+            cloudletList.add(cloudlet6);
+
+            NewCloudlet cloudlet7 = new NewCloudlet(7, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, new ArrayList<NewCloudlet>());
+            cloudlet7.setUserId(brokerId);
+            cloudletList.add(cloudlet7);
+
+            ArrayList<NewCloudlet> ncl4 = new ArrayList<NewCloudlet>();
+            ncl4.add(cloudlet);
+            ncl4.add(cloudlet2);
+            ncl4.add(cloudlet7);
+            NewCloudlet cloudlet8 = new NewCloudlet(8, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, ncl4 );
+            cloudlet8.setUserId(brokerId);
+            cloudletList.add(cloudlet8);
+
+            ArrayList<NewCloudlet> ncl5 = new ArrayList<NewCloudlet>();
+            ncl5.add(cloudlet4);
+            ncl5.add(cloudlet8);
+            NewCloudlet cloudlet9 = new NewCloudlet(9, length, pesNumber, fileSize,
+                    outputSize, utilizationModel, utilizationModel,
+                    utilizationModel, ncl5 );
+            cloudlet9.setUserId(brokerId);
+            cloudletList.add(cloudlet9);
 
 
 
